@@ -7,11 +7,6 @@ import * as schema from './schema';
 import { buildCommentPrompt, buildPostPrompt } from './prompts';
 import { createAgentComment, createAgentPost } from './db';
 
-export interface Env {
-	AI: Ai;
-	DB_URL: string;
-}
-
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		// const sql = postgres(env.DB_URL);
