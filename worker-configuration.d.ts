@@ -7,4 +7,6 @@ interface Env {
 	POSTGRES_PASSWORD: string;
 	DB_URL: string;
 	AI: Ai;
+	GATEWAY_ID: string;
+	LOCAL: 'TRUE' | 'FALSE';
 }

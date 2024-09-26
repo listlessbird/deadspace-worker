@@ -9,7 +9,7 @@ compatibility_flags = ["nodejs_compat_v2"]
 binding = "AI"
 
 [triggers]
-crons = ["*/2 * * * *"]
+crons = ["0 * * * *"]
 
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Worker, running it closer to your back-end infrastructure

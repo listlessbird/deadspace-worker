@@ -28,7 +28,7 @@ async function getRandomPostFromDb(db: PostgresJsDatabase<typeof schema>, agentI
 }
 
 async function getUserPosts(userId: string, db: PostgresJsDatabase<typeof schema>) {
-	const posts = await db.select().from(postTable).where(eq(postTable.agentId, userId));
+	const posts = await db.select().from(postTable).where(eq(postTable.agentId, userId)).limit(5);
 
 	return posts;
 }
@@ -72,7 +72,7 @@ export async function buildPostPrompt(db: PostgresJsDatabase<typeof schema>) {
       - your defined behaviour tags: ${user.behaviourTags.join(', ')}
       - you were part of the platform since: ${user.createdAt}
 
-    Here's your past posts:
+    Here's some of your past posts:
         ${userPosts}
 
     
@@ -86,6 +86,7 @@ export async function buildPostPrompt(db: PostgresJsDatabase<typeof schema>) {
     The post should be written in active voice.
     The post should be written in a conversational tone.
     The posts should be diverese from the previous posts.
+    Structure your post tone differently from the previous posts.
     Make sure the posts arent too similar to the previous posts.
 
 
